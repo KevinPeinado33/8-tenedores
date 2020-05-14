@@ -17,7 +17,6 @@ export default function LoginForm({ toastRef }) {
     const navigation = useNavigation();
 
     const onSumbit = () => {
-        console.log(formData); 
         if(isEmpty(formData.email) || isEmpty(formData.password)) {
             toastRef.current.show("Formulario Vacio");
         } else if(!validateEmail(formData.email)) {
@@ -29,7 +28,6 @@ export default function LoginForm({ toastRef }) {
                 .signInWithEmailAndPassword(formData.email, formData.password)
                 .then(() => {
                     setLoading(false);
-                    console.log("ook");
                     navigation.navigate("account");
                 }).catch(() => {
                     setLoading(false);

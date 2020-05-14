@@ -6,12 +6,13 @@ import Toast from 'react-native-easy-toast';
 import { useNavigation } from '@react-navigation/native';
 
 import LoginForm from '../../components/Account/LoginForm';
+import LoginFacebook from '../../components/Account/LoginFacebook';
 
 export default function Login() {
     const toastRef = useRef();
-    return(
+    return (
         <ScrollView>
-            <Image 
+            <Image
                 source={require("../../../assets/img/5-tenedores-letras-iconos-logo.png")}
                 resizeMode="contain"
                 style={styles.logo} />
@@ -20,7 +21,9 @@ export default function Login() {
                 <CreateAccount />
             </View>
             <Divider style={styles.divider} />
-            <Text>Social Logins</Text>
+            <View style={styles.viewContainer}>
+                <LoginFacebook toastRef={toastRef} />
+            </View>
 
             <Toast ref={toastRef} position="center" opacity={0.9} />
         </ScrollView>
@@ -29,12 +32,12 @@ export default function Login() {
 
 function CreateAccount() {
     const navigation = useNavigation();
-    return(
+    return (
         <Text style={styles.textRegister}>
             ¿Aún no tienes un cuenta?{" "}
-            <Text 
+            <Text
                 style={styles.btnRegister}
-                onPress={()=> navigation.navigate('register')}>Registrate</Text>
+                onPress={() => navigation.navigate('register')}>Registrate</Text>
         </Text>
     )
 }
@@ -59,7 +62,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     divider: {
-        backgroundColor:"#00a680",
+        backgroundColor: "#00a680",
         margin: 40
     }
 });
